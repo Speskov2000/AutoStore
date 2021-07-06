@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    @RenderSection("scripts", required: false)
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="navbar bg-dark navbar-dark" style="margin-bottom:20px;" role="navigation">
+            <a class="navbar-brand" href="/">
+                <div>
+                    <div style="font-size: 1.5em">
+                        <img src="~/Content/Image/ava.png" class="logo" alt="Logo" />
+                        <div class="d-sm-inline d-none">AVTOзапчасть</></div>
+                    </div>
+                </div>
+            </a>
+            @using (Html.BeginForm("Search", "Products", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <p>
+                    <input class="form-control" placeholder="Поиск" type="text" name="findWord" value="@ViewBag.Word" maxlength="50">
+                    <input class="btn btn-success" type="submit" value="Найти" />
+                </p>
+            }
+            @Html.Action("Summary", "Cart")
+        </div>
+        <div class="d-block d-md-none">
+            @Html.Action("Menu", "Nav", new { horizontalNav = true })
+        </div>
+        <div class="row">
+            <div id="genres" class="col-md-3 d-none d-md-block">
+                @Html.Action("Menu", "Nav")
+            </div>
+            <div class="col-12 col-md-8">
+                @RenderBody()
+            </div>
+        </div>
+        <hr />
+        <div class="navbar navbar-light" style=" margin-top: 20px;">            
+            <div class="d-none d-sm-block col-lg-3"></div>
+            <div class="col-9">
+                <h3>Контакты:</h3>
+            </div>
+            <div class="d-none d-sm-block col-lg-3"></div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <address>                    
+                    <a href="https://wa.me/+77013596153">
+                        <img src="~/Content/Image/whatsapp.png" width="40px" height="auto" /> 8 (701) 359 61 53<br />
+                    </a>
+                    <a href="https://wa.me/+77051883926">
+                        <img src="~/Content/Image/whatsapp.png" width="40px" height="auto"/> 8 (705) 188 39 26<br />
+                    </a>
+                    <a href="https://wa.me/+77009278491">
+                        <img src="~/Content/Image/whatsapp.png" width="40px" height="auto" /> 8 (700) 927 84 91
+                    </a>
+                </address>
+            </div>
+            <div class="col-12 col-md-6">
+                <address>
+                    <a href="https://www.instagram.com/avto_zapchast_2017/?utm_medium=copy_link"><img src="https://i.pinimg.com/originals/04/78/03/047803389003a5e9cdb22c7feffce512.png" width="37 px" height="auto" alt="instagram" /> avto_zapchast_2017<br /><br /></a>
+                    <strong> Email:</strong>   <a href="mailto:avtozapchast2017@mail.ru">avtozapchast2017@mail.ru</a><br />
+                    <strong>Наш адрес:</strong> Казахстан, г.Караганда, ул.Четская 16/1, AVTOзапчасть <br />
+                </address>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

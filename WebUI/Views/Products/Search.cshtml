@@ -1,0 +1,15 @@
+﻿@using WebUI.Models
+@model ProductsListViewModel
+
+@{
+    ViewBag.Title = "Поиск товаров";
+}
+<h2>Результаты содержащие "@ViewBag.Word":</h2><br />
+@foreach (var product in Model.Products)
+{
+    @Html.Partial("_ProductSummary", product);
+}
+
+<div class="btn-group-lg float-xl-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Search", new { findWord = @ViewBag.Word, page = x }))
+</div>
